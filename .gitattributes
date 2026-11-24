@@ -1,0 +1,36 @@
+# =============================================================================
+# SkillSphere — Git attributes
+# Purpose: store every text file with LF line endings in the repository so that
+# Windows, macOS, and Linux contributors never produce line-ending-only diffs.
+# =============================================================================
+
+# Default: let Git detect text files and normalize them to LF.
+* text=auto eol=lf
+
+# Windows-only scripts must keep CRLF to run correctly.
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
+
+# Unix shell scripts (including the Android Gradle wrapper) must keep LF.
+*.sh    text eol=lf
+gradlew text eol=lf
+
+# Binary files: never modify, never diff as text.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.pdf   binary
+*.ttf   binary
+*.otf   binary
+*.woff  binary
+*.woff2 binary
+*.jar   binary
+*.zip   binary
+
+# Lock files: treat as generated in GitHub diffs (collapsed by default).
+package-lock.json linguist-generated=true
+pubspec.lock      linguist-generated=true

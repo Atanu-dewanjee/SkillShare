@@ -1,0 +1,31 @@
+# =============================================================================
+# SkillSphere — EditorConfig (https://editorconfig.org)
+# Keeps basic formatting consistent across editors. Language-specific
+# formatters (Prettier, dart format) will be configured in each app later.
+# =============================================================================
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Markdown uses two trailing spaces for line breaks; do not strip them.
+[*.md]
+trim_trailing_whitespace = false
+
+# Android native code conventionally uses 4-space indentation.
+[*.{kt,kts,java,gradle}]
+indent_size = 4
+
+# Makefiles require tabs.
+[Makefile]
+indent_style = tab
+
+# Windows scripts use CRLF (matches .gitattributes).
+[*.{bat,cmd,ps1}]
+end_of_line = crlf
