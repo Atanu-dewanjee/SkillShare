@@ -1,0 +1,194 @@
+# =============================================================================
+# SkillSphere — root .gitignore
+# Covers: Node.js / NestJS, Next.js, Prisma, Flutter / Dart, Docker,
+#         environment configuration, IDEs, and operating systems.
+# App-specific .gitignore files may be added inside each app later.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Environment variables and secrets
+# Never commit real secrets. Commit only template files such as .env.example.
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+key.properties
+secrets/
+credentials.json
+service-account*.json
+
+# Firebase / push notification config (contains project keys)
+google-services.json
+GoogleService-Info.plist
+
+# -----------------------------------------------------------------------------
+# Node.js (NestJS, Next.js, tooling)
+# -----------------------------------------------------------------------------
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+
+# Build output
+dist/
+build/
+out/
+
+# Test coverage and reports
+coverage/
+.nyc_output/
+junit.xml
+test-results/
+playwright-report/
+
+# Monorepo / build tool caches
+.turbo/
+.cache/
+.parcel-cache/
+
+# -----------------------------------------------------------------------------
+# Next.js (admin portal)
+# -----------------------------------------------------------------------------
+.next/
+next-env.d.ts
+.vercel/
+
+# -----------------------------------------------------------------------------
+# Prisma
+# Migrations (prisma/migrations/) ARE committed. Local SQLite files are not.
+# -----------------------------------------------------------------------------
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# -----------------------------------------------------------------------------
+# Flutter / Dart (mobile app)
+# -----------------------------------------------------------------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+**/doc/api/
+*.g.dart.tmp
+
+# Android
+**/android/.gradle/
+**/android/captures/
+**/android/local.properties
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+**/android/**/GeneratedPluginRegistrant.java
+*.apk
+*.aab
+
+# iOS / macOS
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral/
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_assets/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Runner/GeneratedPluginRegistrant.*
+**/ios/ServiceDefinitions.json
+xcuserdata/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Flutter desktop/web ephemeral files (in case those targets are added)
+**/linux/flutter/ephemeral/
+**/windows/flutter/ephemeral/
+**/macos/Flutter/ephemeral/
+
+# -----------------------------------------------------------------------------
+# Docker
+# Dockerfiles and docker-compose.yml ARE committed; local overrides and
+# persisted container data are not.
+# -----------------------------------------------------------------------------
+docker-compose.override.yml
+docker-compose.override.yaml
+.docker-data/
+docker-data/
+
+# -----------------------------------------------------------------------------
+# Logs and temporary files
+# Log folders are anchored to the repo root and app roots so that source
+# folders named "logs" (e.g. a NestJS module) are NOT ignored by accident.
+# -----------------------------------------------------------------------------
+/logs/
+/apps/*/logs/
+*.log
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*~
+
+# -----------------------------------------------------------------------------
+# File uploads stored locally during development
+# Anchored so that source folders named "uploads" (e.g. a NestJS module) are
+# NOT ignored by accident.
+# -----------------------------------------------------------------------------
+/uploads/
+/apps/*/uploads/
+
+# -----------------------------------------------------------------------------
+# IDEs and editors
+# Shared VS Code settings may be committed later by un-ignoring specific files.
+# -----------------------------------------------------------------------------
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+.history/
+*.sublime-workspace
+
+# AI assistant local settings (may contain machine-specific paths/permissions)
+.claude/settings.local.json
+
+# -----------------------------------------------------------------------------
+# Operating systems
+# -----------------------------------------------------------------------------
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
