@@ -4,7 +4,7 @@
 
 SkillSphere is a platform where students from different universities exchange skills with each other. Every student can be a **learner** and a **mentor** at the same time: teach what you know, learn what you don't, and use an internal credit system to keep exchanges fair.
 
-> **Status:** Early development. This repository currently contains only project documentation. Application code will be added in later stages (see [Development Roadmap](#development-roadmap)).
+> **Status:** Early development. This repository currently contains the project structure and documentation only. Application code will be added in later stages (see [Development Roadmap](#development-roadmap)).
 
 ---
 
@@ -14,7 +14,7 @@ SkillSphere is a platform where students from different universities exchange sk
 - [Key Features](#key-features)
 - [Technology Stack](#technology-stack)
 - [Project Scope](#project-scope)
-- [Planned Repository Structure](#planned-repository-structure)
+- [Repository Structure](#repository-structure)
 - [Development Roadmap](#development-roadmap)
 - [Engineering Practices](#engineering-practices)
 - [Getting Started](#getting-started)
@@ -107,20 +107,26 @@ To keep the first version focused and achievable, the following will **not** be 
 
 ---
 
-## Planned Repository Structure
+## Repository Structure
 
-This is a **monorepo**: all parts of the system will live in this one repository. The structure below is a plan and will be created in a later step.
+This is a **monorepo**: all parts of the system live in this one repository. Each app is self-contained, with its own dependencies and configuration ([ADR 0001](docs/decisions/0001-monorepo-structure.md)).
 
 ```text
 SkillShare/
 ├── apps/
-│   ├── mobile/      # Flutter mobile app
-│   ├── api/         # NestJS REST API + Socket.IO + BullMQ workers
-│   └── admin/       # Next.js admin portal
-├── docs/            # Architecture notes, API docs, decisions
-├── README.md
-└── .gitignore
+│   ├── api/            # NestJS REST API + Socket.IO + BullMQ workers
+│   ├── admin/          # Next.js admin portal
+│   └── mobile/         # Flutter mobile app
+├── docs/
+│   └── decisions/      # Architecture Decision Records (ADRs)
+├── .editorconfig       # Shared editor formatting basics
+├── .gitattributes      # Line-ending and binary file rules
+├── .gitignore
+├── CONTRIBUTING.md     # Branching, commits, pull requests, safety rules
+└── README.md
 ```
+
+The app folders currently contain only placeholder READMEs; application code is added in later stages.
 
 ---
 
@@ -131,8 +137,8 @@ The project is built incrementally. Each stage is small, reviewed, and committed
 | Stage | Focus | Status |
 | --- | --- | --- |
 | 1 | Repository initialization: README, `.gitignore`, Git/GitHub setup | ✅ Done |
-| 2 | Monorepo folder structure and project conventions | ⏳ Next |
-| 3 | Local development environment (Docker for PostgreSQL and Redis, env templates) | Planned |
+| 2 | Monorepo folder structure and project conventions | ✅ Done |
+| 3 | Local development environment (Docker for PostgreSQL and Redis, env templates) | ⏳ Next |
 | 4 | Backend foundation (NestJS app, configuration, health check) | Planned |
 | 5 | Database schema design and Prisma setup | Planned |
 | 6 | Authentication (registration, login, access/refresh tokens) | Planned |
@@ -155,11 +161,14 @@ The order may be adjusted as the project evolves; changes will be recorded here.
 
 ## Engineering Practices
 
+The full workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md). In short:
+
 - **Conventional Commits** for commit messages (e.g. `feat:`, `fix:`, `chore:`, `docs:`).
 - **Small, logical commits** that each do one thing.
 - **No secrets in Git.** Configuration is supplied through environment variables; only example files such as `.env.example` are committed.
 - **No generated files** (dependencies, build output, caches) are committed.
-- **`main`** is the primary branch. History is never force-pushed without explicit agreement.
+- **`main`** is the primary branch. Changes arrive through short-lived branches and pull requests. History is never force-pushed without explicit agreement.
+- **Significant decisions** are recorded as [ADRs](docs/decisions/).
 - **Security, maintainability, and clean architecture** are prioritized over speed.
 
 ---
